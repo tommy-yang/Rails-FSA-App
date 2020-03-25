@@ -1,3 +1,7 @@
 <h2>showing postal details</h2>
 
 <p><strong>Postalcode: </strong> <%= @postal.postalcode%></p>
+
+<%= link_to "Edit", edit_postal_path(@postal)%> |
+<%= link_to "Delete", postal_path(@postal), method: :delete, data: { confirm: "Are you sure?"} %> |
+<%= link_to "Return to list of postal codes", postals_path%> |

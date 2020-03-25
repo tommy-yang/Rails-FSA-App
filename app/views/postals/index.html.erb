@@ -1,0 +1,25 @@
+<h2>Showing list of postalcodes</h2>
+
+<table>
+ <thead>
+   <tr>
+   <th>Postalcode</th>
+   <th colspan = "3">Actions</th>
+   </tr>
+   </thead>
+
+   <tbody>
+   <% @postals.each do |postal|%>
+        <tr>
+    <td><%= postal.postalcode%> </td>
+    <td><%= link_to 'Show', postal_path(postal)%> </td>
+    <td><%= link_to 'Edit', edit_postal_path(postal)%> </td>
+    <td><%= link_to 'Delete', postal_path(postal), method: :delete, data: { confirm: "Are you sure?"}%></td>
+</tr>
+<% end %>
+   </tbody>
+   </table>
+
+<p>
+   <%= link_to 'Add new Postal code', new_postal_path%>
+</p>
