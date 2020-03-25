@@ -1,0 +1,21 @@
+<% if @postal.errors.any? %>
+<h2> The following errors prevented the postalcode from being saved </h2>
+<ul>
+<% @postal.errors.full_messages.each do |msg| %>
+<li><%= msg %></li> 
+<% end %>
+
+</ul>
+<% end %>
+<%= form_with(model: @postal, local: true) do |f| %>
+
+<p>
+<%= f.label :postalcode %>
+<%= f.text_field :postalcode %>
+
+</p>
+<p>
+<%= f.submit %>
+</p>
+
+<% end%>

@@ -1,7 +1,9 @@
 class PostalsController < ApplicationController
 
+    before_action :set_postal, only: [:show, :edit, :update, :destroy]
+
 def show
-  @postal = Postal.find(params[:id])
+ 
 end
 
 def index
@@ -10,7 +12,7 @@ def index
 end
 
 def edit
-    @postal = Postal.find(params[:id])
+  
 end
 
 def new
@@ -18,7 +20,7 @@ def new
 end
 
 def create
-@postal = Postal.new(params.require(:postal).permit(:postalcode))
+@postal = Postal.new(postal_params)
 if @postal.save
     flash[:notice] = "Postalcode was saved successfully"
 
@@ -32,8 +34,8 @@ end
 end
 
 def update 
-@postal = Postal.find(params[:id])
-if @postal.update(params.require(:postal).permit(:postalcode))
+
+if @postal.update(postal_params)
 
     flash[:notice] = "Postalcode was updated successfully"
     redirect_to @postal
@@ -44,10 +46,20 @@ end
 end
 
 def destroy
-    @postal = Postal.find(params[:id])
+    
     @postal.destroy
     redirect_to postals_path
 end
 
+private
+
+def set_postal
+    @postal = Postal.find(params[:id])
+end
+
+def postal_params
+
+    params.require(:postal).permit(:postalcode)
+end
 
 end

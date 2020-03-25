@@ -1,25 +1,6 @@
 <h2>new address</h2>
 
-<% if @postal.errors.any? %>
-<h2> The following errors prevente the postalcode from being saved </h2>
-<ul>
-<% @postal.errors.full_messages.each do |msg| %>
-<li><%= msg %></li> 
-<% end %>
 
-</ul>
-<% end %>
-<%= form_with scope: :postal, url: postals_path, local: true do |f|%>
-
-<p>
-<%= f.label :postalcode %>
-<%= f.text_field :postalcode %>
-
-</p>
-<p>
-<%= f.submit %>
-</p>
-
-<% end%>
+<%= render 'form'%>
 
 <%= link_to "Return to list of postal codes", postals_path%> |
