@@ -22,6 +22,7 @@ end
 def create
 @postal = Postal.new(postal_params)
 if @postal.save
+    
     flash[:notice] = "Postalcode was saved successfully"
 
 redirect_to @postal
@@ -36,7 +37,7 @@ end
 def update 
 
 if @postal.update(postal_params)
-
+    
     flash[:notice] = "Postalcode was updated successfully"
     redirect_to @postal
 else

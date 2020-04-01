@@ -1,5 +1,5 @@
 class Postal < ApplicationRecord
-
+    #before_create { |postal| postal.postalcode = postal.postalcode.upcase }
      validates :postalcode, presence: true, length: {minimum: 6, maximum: 6},  format: { with: /\A^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$\z/}
 
 
