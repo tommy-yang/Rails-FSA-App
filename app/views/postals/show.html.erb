@@ -1,6 +1,6 @@
 <h2>Showing Postal code with id: <strong><%=@postal.id%></strong></h2> 
 
-<p><strong>Postalcode: </strong> <%= @postal.postalcode%></p>
+<p><strong>Postalcode: </strong> <%= @postal.postalcode%><strong>  Submitted at: </strong><%= @postal.created_at%><</p>
 
 <%= link_to "Edit", edit_postal_path(@postal)%> |
 <%= link_to "Delete", postal_path(@postal), method: :delete, data: { confirm: "Are you sure?"} %> |

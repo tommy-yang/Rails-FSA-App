@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_234113) do
+ActiveRecord::Schema.define(version: 2020_04_02_192824) do
 
   create_table "categories", force: :cascade do |t|
     t.string "fsa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fsas", force: :cascade do |t|
+    t.string "fsacode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_234113) do
     t.string "postalcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "fsa_id"
   end
 
 end

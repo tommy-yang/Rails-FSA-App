@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fsas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fsacode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fsas.each do |fsa| %>
+      <tr>
+        <td><%= fsa.fsacode %></td>
+        <td><%= link_to 'Show', fsa %></td>
+        <td><%= link_to 'Edit', edit_fsa_path(fsa) %></td>
+        <td><%= link_to 'Destroy', fsa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fsa', new_fsa_path %>
