@@ -1,46 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe Postal, type: :model do
+  
   context 'validation tests' do
 
+  
     it 'contains six characters' do
-      postal=Postal.new(postalcode: 'V7C1M9')
+      postal=Postal.new(postalcode: 'V5L4C3')
       expect(postal.postalcode.length).to eq(6)
-    
     end
 
-    #it 'ensures postal code presence' do
-     # postal=Postal.new(postalcode: 'V7C1M9')
-      #expect(postal.postalcode).to eq(nil)
-    #end
-
-    it 'should save successfully' do
-      postal=Postal.new(postalcode: 'V5A1S6').save
-      expect(postal).to eq(true)
+  
+    it 'ensures Postalcode is valid and follows formatting' do
+      postal=Postal.new(postalcode: 'V7C1M9').save
+      expect(postal).to eq(false)
     end
-    #it 'should match formatting' do
-      #postal=(Postal.new(postalcode: 'V7C1M9'))
-      #regex= /\A^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$\z/
-      #expect((postal.postalcode).to match(regex))
-    
-    #end
+
+
+  context 'Test for invalid postalcode' do
+
+    it 'Is not valid if empty' do
+      postal=Postal.new(postalcode: :nil)
+      expect(postal).to_not be_valid
+    end
+  
+    it 'Cannot contain more than 6 characters' do
+      postal=Postal.new(postalcode: 'V7C1M92')
+      expect(postal).to_not be_valid
+    end
+  
+    it 'Cannot contain less than 6 characters' do
+      postal=Postal.new(postalcode: 'V7C1M')
+      expect(postal).to_not be_valid
+    end
+  
+    it 'Ensures postalcode is invalid if it does not follow formatting' do
+      postal=Postal.new(postalcode: 'V7C1M99').save
+      expect(postal).to eq(false)
+  
+    end
+
 
   end
 
-  #context 'scope tests' do
-   
-      #Postal.new(postalcode: 'V7C1M9').save
-      #Postal.new((postalcode: 'V7C1M9').(active: true)).save
-      #Postal.new((postalcode: 'V7C1M9').merge(active: false)).save
-
-    #it 'should return active postal codes' do
-     # expect(Postal.active_postals.size).to eq(2)
-    #end
-    #it 'should return inactive postal codes' do
-     # expect(Postal.inactive_postals.size).to eq(1)
-    #end
-
-
-#end
+end
 
 end

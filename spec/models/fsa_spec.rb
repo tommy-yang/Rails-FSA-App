@@ -2,33 +2,46 @@ require 'rails_helper'
 
 RSpec.describe Fsa, type: :model do
   
-  context 'validation tests' do
+  context 'Test for valid FSA' do
 
-    it 'contains three characters' do
+    it 'Ensures FSA is valid and follows regex' do
+      fsa=Fsa.new(fsacode: 'V7C').save
+      expect(fsa).to eq(true)
+
+    end
+
+    it 'Contains three characters' do
       postal=Postal.new(postalcode: 'V7C')
       expect(postal.postalcode.length).to eq(3)
     
     end
+    
+end
 
-    it 'should save successfully' do
-      fsa=Fsa.new(fsacode: 'V7C').save
-      expect(fsa).to eq(true)
+context 'Test for invalid FSA' do
+
+    it 'Is not valid if empty' do
+      fsa= Fsa.new(fsacode: nil)
+      expect(fsa).to_not be_valid
     end
-end
 
-context 'scope tests' do
+    it 'Cannot contain more than 3 characters' do
+      fsa= Fsa.new(fsacode: 'X2X2')
+      expect(fsa).to_not be_valid
+    end
 
-  let (:params) { {fsacode: 'V7C'}}
-  before (:each) do
-  Fsa.new(params).save
+    it 'Cannot contain less than 3 characters' do
+      fsa= Fsa.new(fsacode: 'X2')
+      expect(fsa).to_not be_valid
+    end
 
-end
+    it 'Ensures FSA is invalid if does not follow formatting' do
+      fsa=Fsa.new(fsacode: 'X2X2').save
+      expect(fsa).to eq(false)
 
-  it 'should return active Fsa' do
-    expect(Fsa.active_fsas.size).to eq(1)
+    end
+
+  
+
   end
-
-
-end
-
 end
