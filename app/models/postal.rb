@@ -7,10 +7,8 @@ class Postal < ApplicationRecord
 
 
   validate :code_starts_with 
-     
-
-   private 
-
+   
+private
      def code_starts_with
         
       if !postalcode.start_with?(*Fsa.all.pluck(:fsacode))

@@ -15,6 +15,10 @@ RSpec.describe Fsa, type: :model do
       expect(postal.postalcode.length).to eq(3)
     
     end
+
+    it 'should not save duplicate FSA' do
+      
+    end
     
 end
 

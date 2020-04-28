@@ -5,15 +5,14 @@ RSpec.describe Postal, type: :model do
   context 'validation tests' do
 
   
-    it 'contains six characters' do
-      postal=Postal.new(postalcode: 'V5L4C3')
-      expect(postal.postalcode.length).to eq(6)
-    end
-
-  
-    it 'ensures Postalcode is valid and follows formatting' do
+    it 'Ensures Postalcode is valid and follows formatting' do
       postal=Postal.new(postalcode: 'V7C1M9').save
       expect(postal).to eq(false)
+    end
+
+    it 'Contains six characters' do
+      postal=Postal.new(postalcode: 'V5L4C3')
+      expect(postal.postalcode.length).to eq(6)
     end
 
 
@@ -39,7 +38,6 @@ RSpec.describe Postal, type: :model do
       expect(postal).to eq(false)
   
     end
-
 
   end
 
