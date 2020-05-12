@@ -1,0 +1,72 @@
+<%= form_with(model: shape, local: true) do |form| %>
+  <% if shape.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shape.errors.count, "error") %> prohibited this shape from being saved:</h2>
+
+      <ul>
+      <% shape.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fsa %>
+    <%= form.text_field :fsa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :btm_left_x %>
+    <%= form.text_field :btm_left_x %>
+  </div>
+
+  <div class="field">
+    <%= form.label :btm_left_y %>
+    <%= form.text_field :btm_left_y %>
+  </div>
+
+  <div class="field">
+    <%= form.label :btm_right_x %>
+    <%= form.text_field :btm_right_x %>
+  </div>
+
+  <div class="field">
+    <%= form.label :btm_right_y %>
+    <%= form.text_field :btm_right_y %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_right_x %>
+    <%= form.text_field :top_right_x %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_right_y %>
+    <%= form.text_field :top_right_y %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_left_x %>
+    <%= form.text_field :top_left_x %>
+  </div>
+
+  <div class="field">
+    <%= form.label :top_left_y %>
+    <%= form.text_field :top_left_y %>
+  </div>
+
+  <div class="field">
+    <%= form.label :polygon %>
+    
+  </div>
+
+  <div class="field">
+    <%= form.label :point %>
+   
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

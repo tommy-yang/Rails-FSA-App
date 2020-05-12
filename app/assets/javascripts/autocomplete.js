@@ -1,8 +1,9 @@
+
 $(document).on('turbolinks:load', function() {
 function initializeAutocomplete(id) {     
      var element = document.getElementById(id);
      if (element) {
-       var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'], componentRestrictions: {country: 'can'} });
+       var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'], componentRestrictions: {country: 'us'} });
        google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
        }
 }

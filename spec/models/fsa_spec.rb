@@ -30,17 +30,17 @@ context 'Test for invalid FSA' do
     end
 
     it 'Cannot contain more than 3 characters' do
-      fsa= Fsa.new(fsacode: 'X2X2')
+      fsa= Fsa.new(fsacode: 'V7C4')
       expect(fsa).to_not be_valid
     end
 
     it 'Cannot contain less than 3 characters' do
-      fsa= Fsa.new(fsacode: 'X2')
+      fsa= Fsa.new(fsacode: 'V5')
       expect(fsa).to_not be_valid
     end
 
     it 'Ensures FSA is invalid if does not follow formatting' do
-      fsa=Fsa.new(fsacode: 'X2X2').save
+      fsa=Fsa.new(fsacode: 'V7C1').save
       expect(fsa).to eq(false)
 
     end

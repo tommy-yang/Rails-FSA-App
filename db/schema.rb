@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_153101) do
+ActiveRecord::Schema.define(version: 2020_05_11_184200) do
+
+  create_table "autocompletes", force: :cascade do |t|
+    t.string "address"
+    t.integer "street_number"
+    t.string "locality"
+    t.string "route"
+    t.string "administrative_area_level_1"
+    t.string "country"
+    t.integer "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "fsa"
@@ -38,6 +50,22 @@ ActiveRecord::Schema.define(version: 2020_04_21_153101) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "fsa_id"
+  end
+
+  create_table "shapes", force: :cascade do |t|
+    t.string "fsa"
+    t.string "btm_left_x"
+    t.string "btm_left_y"
+    t.string "btm_right_x"
+    t.string "btm_right_y"
+    t.string "top_right_x"
+    t.string "top_right_y"
+    t.string "top_left_x"
+    t.string "top_left_y"
+    t.string "polygon"
+    t.string "point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

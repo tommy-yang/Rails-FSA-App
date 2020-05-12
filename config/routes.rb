@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :shapes
+  resources :autocompletes
   resources :places
   resources :fsas
   root 'pages#home'
