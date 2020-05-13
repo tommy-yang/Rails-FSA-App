@@ -1,0 +1,11 @@
+<div class="container">
+  <%= form_with model: @delivery, id: 'delivery-form', method: :post do |f| %>
+    <%= fields_for :deliveries do |d| %>
+      <%= d.label :longitude %>
+      <%= d.text_field :longitude, value: -123.1207 %>
+      <%= d.label :latitude %>
+      <%= d.text_field :latitude, value: 49.2827 %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+</div>
