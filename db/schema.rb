@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_184200) do
+ActiveRecord::Schema.define(version: 2020_05_13_191129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "autocompletes", force: :cascade do |t|
     t.string "address"
@@ -31,6 +32,20 @@ ActiveRecord::Schema.define(version: 2020_05_11_184200) do
     t.string "fsa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "zone"
+    t.string "postal_code"
+    t.float "longitude"
+    t.float "latitude"
+    t.geography "coordinates", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.geometry "geometry", limit: {:srid=>4326, :type=>"geometry"}
+    t.jsonb "geojson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coordinates"], name: "index_deliveries_on_coordinates", using: :gist
+    t.index ["geometry"], name: "index_deliveries_on_geometry", using: :gist
   end
 
   create_table "fsas", force: :cascade do |t|
@@ -53,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_184200) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "fsa_id"
+    t.string "fsa_fsacode"
   end
 
   create_table "shapes", force: :cascade do |t|
