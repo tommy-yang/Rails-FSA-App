@@ -6,10 +6,13 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    @point = Geographical::Point.call(permitted_params)
+    @delivery = Delivery.new
+    @delivery.assign_attributes(coordinates: point)
+
+    return unless @delivery.save
 
     respond_to do |format|
-      format.json { render json: { point: @point } }
+      format.json { render json: details }
     end    
   end
 
@@ -21,7 +24,30 @@ class DeliveriesController < ApplicationController
 
   private
 
+  def details
+    { point: point, geometry: geometry, within: within }
+  end
+
+  def within
+    point.within?(geometry)
+  end
+
+  def point
+    @point ||= Geographical::Point.call(permitted_params)
+  end
+
+  def geometry
+    @geometry ||= Geographical::Geometry.call(permitted_params)
+  end
+
   def permitted_params
-    params.require(:deliveries).permit(:longitude, :latitude)
+    params.require(:delivery).permit(
+      :longitude, 
+      :latitude, 
+      :sw_lon, 
+      :sw_lat, 
+      :ne_lon, 
+      :ne_lat
+    )
   end
 end

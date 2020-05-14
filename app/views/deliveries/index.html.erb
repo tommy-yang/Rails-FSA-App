@@ -1,11 +1,61 @@
-<div class="container">
+<div class="container my-2">
   <%= form_with model: @delivery, id: 'delivery-form', method: :post do |f| %>
-    <%= fields_for :deliveries do |d| %>
-      <%= d.label :longitude %>
-      <%= d.text_field :longitude, value: -123.1207 %>
-      <%= d.label :latitude %>
-      <%= d.text_field :latitude, value: 49.2827 %>
+    <%= fields_for :delivery do |d| %>
+      <div class="row">
+        <div class="col">
+          <h2>Bounding Box</h2>
+          <div class="form-group">
+            <%= d.label :sw_lon %>
+            <%= d.text_field :sw_lon, value: -123.22496118, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= d.label :sw_lat %>
+            <%= d.text_field :sw_lat, value: 49.19844515, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= d.label :ne_lon %>
+            <%= d.text_field :ne_lon, value: -123.02324196, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= d.label :ne_lat %>
+            <%= d.text_field :ne_lat, value: 49.31617132, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col">
+          <h2>Coordinate</h2>
+          <div class="form-group">
+            <%= d.label :longitude %>
+            <%= d.text_field :longitude, value: -123.1207, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= d.label :latitude %>
+            <%= d.text_field :latitude, value: 49.2827, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col">
+          <h2>Results</h2>
+          <div class="form-group">
+            <label for="delivery-point">Point</label>
+            <input type="text" readonly class="form-control-plaintext" id="delivery-point" placeholder="--">
+          </div>
+          <div class="form-group">
+            <label for="delivery-geometry">Geometry</label>
+            <input type="text" readonly class="form-control-plaintext" id="delivery-geometry" placeholder="--">
+          </div>
+          <div class="form-group">
+            <label for="delivery-within">Within Bounds?</label>
+            <input type="text" readonly class="form-control-plaintext" id="delivery-within" placeholder="--">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.submit class: 'btn btn-primary btn-block', value: 'Make Request' %>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= f.submit %>
   <% end %>
+  <div id="map"></div>
 </div>

@@ -5,12 +5,11 @@ RSpec.describe Geographical::Point, type: :model do
   let(:longitude) { -123.1207 }
   let(:latitude) { 49.2827 }
   let(:params) { { longitude: longitude, latitude: latitude } }
-  let(:factory) { double }  
-  let(:flat_coordinate) { double(factory: factory) }
 
   describe '#call' do
-    it 'runs test' do
-      expect(RGeo::Cartesian).to receive(:preferred_factory).with(srid: 4326)
+    it 'creates a point with spherical factory' do
+      expect(RGeo::Cartesian).to receive_message_chain(:preferred_factory, :point)
+        .with(longitude, latitude)
       subject.call
     end
   end

@@ -5,6 +5,7 @@ module Geographical
     def initialize(params)
       @longitude = params[:longitude].to_f
       @latitude = params[:latitude].to_f
+      @factory = RGeo::Cartesian.preferred_factory(srid: 4326)
     end
 
     def call
@@ -16,8 +17,7 @@ module Geographical
     private
 
     def create_coordinate
-      flat_coordinate = RGeo::Cartesian.preferred_factory(srid: 4326)
-      coordinates = flat_coordinate.point(@longitude, @latitude)
+      @factory.point(@longitude, @latitude)
     end
   end
 end

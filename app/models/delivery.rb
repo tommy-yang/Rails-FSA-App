@@ -1,3 +1,3 @@
 class Delivery < ApplicationRecord
-  validates :longitude, :latitude, presence: true
+  validates :coordinates, presence: true, uniqueness: true
 end
