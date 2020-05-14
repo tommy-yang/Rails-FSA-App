@@ -5,6 +5,7 @@ default: &default
   schema_search_path: 'public,postgis'
   host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: demo_test_development
   timeout: 5000
   port: 5432
 
