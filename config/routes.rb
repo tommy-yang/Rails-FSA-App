@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :polygons
   resources :shapes
   resources :autocompletes
   resources :places

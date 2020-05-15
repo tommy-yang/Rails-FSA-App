@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_184200) do
+ActiveRecord::Schema.define(version: 2020_05_15_174131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2020_05_11_184200) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "polygons", force: :cascade do |t|
+    t.string "fsa"
+    t.polygon "fsa_polygon"
+    t.point "point_test"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "postals", force: :cascade do |t|
     t.string "postalcode"
     t.datetime "created_at"
@@ -58,25 +66,16 @@ ActiveRecord::Schema.define(version: 2020_05_11_184200) do
 
   create_table "shapes", force: :cascade do |t|
     t.string "fsa"
-    t.string "btm_left_x"
-    t.string "btm_left_y"
-    t.string "btm_right_x"
-    t.string "btm_right_y"
-    t.string "top_right_x"
-    t.string "top_right_y"
-    t.string "top_left_x"
-    t.string "top_left_y"
-    t.string "polygon"
-    t.string "point"
+    t.string "point_one_x"
+    t.string "point_one_y"
+    t.string "point_two_x"
+    t.string "point_two_y"
+    t.string "point_three_x"
+    t.string "point_three_y"
+    t.string "point_four_x"
+    t.string "point_four_y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "spatial_ref_sys", primary_key: "srid", id: :integer, default: nil, force: :cascade do |t|
-    t.string "auth_name", limit: 256
-    t.integer "auth_srid"
-    t.string "srtext", limit: 2048
-    t.string "proj4text", limit: 2048
   end
 
 end

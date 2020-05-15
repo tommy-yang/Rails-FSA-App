@@ -1,4 +1,3 @@
-=begin
 require "rails_helper"
 
 RSpec.describe ShapesController, type: :routing do
@@ -37,4 +36,3 @@ RSpec.describe ShapesController, type: :routing do
     end
   end
 end
-=end

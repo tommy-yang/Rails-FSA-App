@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Polygons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fsa</th>
+      <th>Fsa polygon</th>
+      <th>Point test</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @polygons.each do |polygon| %>
+      <tr>
+        <td><%= polygon.fsa %></td>
+        <td><%= polygon.fsa_polygon %></td>
+        <td><%= polygon.point_test %></td>
+        <td><%= link_to 'Show', polygon %></td>
+        <td><%= link_to 'Edit', edit_polygon_path(polygon) %></td>
+        <td><%= link_to 'Destroy', polygon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Polygon', new_polygon_path %>

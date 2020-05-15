@@ -1,4 +1,3 @@
-=begin
 require 'rails_helper'
 
 RSpec.describe "shapes/index", type: :view do
@@ -6,29 +5,25 @@ RSpec.describe "shapes/index", type: :view do
     assign(:shapes, [
       Shape.create!(
         fsa: "Fsa",
-        btm_left_x: "Btm Left X",
-        btm_left_y: "Btm Left Y",
-        btm_right_x: "Btm Right X",
-        btm_right_y: "Btm Right Y",
-        top_right_x: "Top Right X",
-        top_right_y: "Top Right Y",
-        top_left_x: "Top Left X",
-        top_left_y: "Top Left Y",
-        polygon: "Polygon",
-        point: "Point"
+        point_one_x: "Point One X",
+        point_one_y: "Point One Y",
+        point_two_x: "Point Two X",
+        point_two_y: "Point Two Y",
+        point_three_x: "Point Three X",
+        point_three_y: "Point Three Y",
+        point_four_x: "Point Four X",
+        point_four_y: "Point Four Y"
       ),
       Shape.create!(
         fsa: "Fsa",
-        btm_left_x: "Btm Left X",
-        btm_left_y: "Btm Left Y",
-        btm_right_x: "Btm Right X",
-        btm_right_y: "Btm Right Y",
-        top_right_x: "Top Right X",
-        top_right_y: "Top Right Y",
-        top_left_x: "Top Left X",
-        top_left_y: "Top Left Y",
-        polygon: "Polygon",
-        point: "Point"
+        point_one_x: "Point One X",
+        point_one_y: "Point One Y",
+        point_two_x: "Point Two X",
+        point_two_y: "Point Two Y",
+        point_three_x: "Point Three X",
+        point_three_y: "Point Three Y",
+        point_four_x: "Point Four X",
+        point_four_y: "Point Four Y"
       )
     ])
   end
@@ -36,16 +31,13 @@ RSpec.describe "shapes/index", type: :view do
   it "renders a list of shapes" do
     render
     assert_select "tr>td", text: "Fsa".to_s, count: 2
-    assert_select "tr>td", text: "Btm Left X".to_s, count: 2
-    assert_select "tr>td", text: "Btm Left Y".to_s, count: 2
-    assert_select "tr>td", text: "Btm Right X".to_s, count: 2
-    assert_select "tr>td", text: "Btm Right Y".to_s, count: 2
-    assert_select "tr>td", text: "Top Right X".to_s, count: 2
-    assert_select "tr>td", text: "Top Right Y".to_s, count: 2
-    assert_select "tr>td", text: "Top Left X".to_s, count: 2
-    assert_select "tr>td", text: "Top Left Y".to_s, count: 2
-    assert_select "tr>td", text: "Polygon".to_s, count: 2
-    assert_select "tr>td", text: "Point".to_s, count: 2
+    assert_select "tr>td", text: "Point One X".to_s, count: 2
+    assert_select "tr>td", text: "Point One Y".to_s, count: 2
+    assert_select "tr>td", text: "Point Two X".to_s, count: 2
+    assert_select "tr>td", text: "Point Two Y".to_s, count: 2
+    assert_select "tr>td", text: "Point Three X".to_s, count: 2
+    assert_select "tr>td", text: "Point Three Y".to_s, count: 2
+    assert_select "tr>td", text: "Point Four X".to_s, count: 2
+    assert_select "tr>td", text: "Point Four Y".to_s, count: 2
   end
 end
-=end

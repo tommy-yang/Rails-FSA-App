@@ -1,2 +1,2 @@
-json.extract! shape, :id, :fsa, :btm_left_x, :btm_left_y, :btm_right_x, :btm_right_y, :top_right_x, :top_right_y, :top_left_x, :top_left_y, :polygon, :point, :created_at, :updated_at
+json.extract! shape, :id, :fsa, :point_one_x, :point_one_y, :point_two_x, :point_two_y, :point_three_x, :point_three_y, :point_four_x, :point_four_y, :created_at, :updated_at
 json.url shape_url(shape, format: :json)

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fsa:</strong>
+  <%= @polygon.fsa %>
+</p>
+
+<p>
+  <strong>Fsa polygon:</strong>
+  <%= @polygon.fsa_polygon %>
+</p>
+
+<p>
+  <strong>Point test:</strong>
+  <%= @polygon.point_test %>
+</p>
+
+<%= link_to 'Edit', edit_polygon_path(@polygon) %> |
+<%= link_to 'Back', polygons_path %>

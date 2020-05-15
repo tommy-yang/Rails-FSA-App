@@ -8,6 +8,11 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'yaml_db'
+gem 'rgeo-proj4'
+gem 'rgeo-activerecord'
+gem 'activerecord-postgis-adapter'
+gem 'rgeo-geojson'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

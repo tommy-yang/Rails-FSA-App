@@ -6,16 +6,14 @@
   <thead>
     <tr>
       <th>Fsa</th>
-      <th>Btm left x</th>
-      <th>Btm left y</th>
-      <th>Btm right x</th>
-      <th>Btm right y</th>
-      <th>Top right x</th>
-      <th>Top right y</th>
-      <th>Top left x</th>
-      <th>Top left y</th>
-      <th>Polygon</th>
-      <th>Point</th>
+      <th>Point one x</th>
+      <th>Point one y</th>
+      <th>Point two x</th>
+      <th>Point two y</th>
+      <th>Point three x</th>
+      <th>Point three y</th>
+      <th>Point four x</th>
+      <th>Point four y</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,16 +22,14 @@
     <% @shapes.each do |shape| %>
       <tr>
         <td><%= shape.fsa %></td>
-        <td><%= shape.btm_left_x %></td>
-        <td><%= shape.btm_left_y %></td>
-        <td><%= shape.btm_right_x %></td>
-        <td><%= shape.btm_right_y %></td>
-        <td><%= shape.top_right_x %></td>
-        <td><%= shape.top_right_y %></td>
-        <td><%= shape.top_left_x %></td>
-        <td><%= shape.top_left_y %></td>
-        <td><%= shape.polygon %></td>
-        <td><%= shape.point %></td>
+        <td><%= shape.point_one_x %></td>
+        <td><%= shape.point_one_y %></td>
+        <td><%= shape.point_two_x %></td>
+        <td><%= shape.point_two_y %></td>
+        <td><%= shape.point_three_x %></td>
+        <td><%= shape.point_three_y %></td>
+        <td><%= shape.point_four_x %></td>
+        <td><%= shape.point_four_y %></td>
         <td><%= link_to 'Show', shape %></td>
         <td><%= link_to 'Edit', edit_shape_path(shape) %></td>
         <td><%= link_to 'Destroy', shape, method: :delete, data: { confirm: 'Are you sure?' } %></td>

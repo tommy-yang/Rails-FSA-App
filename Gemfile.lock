@@ -33,6 +33,9 @@ GEM
       activemodel (= 5.2.4.2)
       activesupport (= 5.2.4.2)
       arel (>= 9.0)
+    activerecord-postgis-adapter (5.2.2)
+      activerecord (~> 5.1)
+      rgeo-activerecord (~> 6.0)
     activestorage (5.2.4.2)
       actionpack (= 5.2.4.2)
       activerecord (= 5.2.4.2)
@@ -151,6 +154,14 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.0)
+    rgeo (2.1.1)
+    rgeo-activerecord (6.2.1)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
+    rgeo-geojson (2.1.1)
+      rgeo (>= 1.0.0)
+    rgeo-proj4 (2.0.0)
+      rgeo (~> 2.0)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
@@ -223,6 +234,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgis-adapter
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 3.18.0)
@@ -238,6 +250,9 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.2)
   rails-controller-testing
+  rgeo-activerecord
+  rgeo-geojson
+  rgeo-proj4
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
