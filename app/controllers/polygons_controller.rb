@@ -69,6 +69,6 @@ class PolygonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def polygon_params
-      params.require(:polygon).permit(:fsa, :fsa_polygon, :point_test)
+      params.require(:polygon).permit(:fsa, :fsa_polygon)
     end
 end

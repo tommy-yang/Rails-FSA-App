@@ -4,8 +4,7 @@ RSpec.describe "polygons/new", type: :view do
   before(:each) do
     assign(:polygon, Polygon.new(
       fsa: "MyString",
-      fsa_polygon: "",
-      point_test: ""
+      fsa_polygon: ""
     ))
   end
 
@@ -17,8 +16,6 @@ RSpec.describe "polygons/new", type: :view do
       assert_select "input[name=?]", "polygon[fsa]"
 
       assert_select "input[name=?]", "polygon[fsa_polygon]"
-
-      assert_select "input[name=?]", "polygon[point_test]"
     end
   end
 end
