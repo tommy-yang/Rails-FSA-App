@@ -34,9 +34,11 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
+        
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
       else
+        
         format.html { render :new }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
@@ -48,9 +50,11 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
+        
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
+        
         format.html { render :edit }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end

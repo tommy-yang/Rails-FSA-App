@@ -1,3 +1,6 @@
 class Polygon < ApplicationRecord
-    validates :polygon, presence: true
+    
+    validates :fsa, presence: true
+
+    validates :fsa_polygon, presence: true
 end

@@ -1,31 +1,33 @@
 class Place < ApplicationRecord
    
   geocoded_by :address
+  
   before_validation :geocode, if: :address_changed?
   #before_save :geocode, if: :address_changed?
   
   validates :name, presence: true 
 
-  validates :address, presence: true 
-
-  validate :point_validation
+  validates :address, presence: true, length: {minimum: 6, maximum: 6},  format: { with: /\A^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$\z/}
   
-  has_many :polygons
+  validate :point_validation
 
+  has_many :polygons
 
 private
   
   def point_validation
     
     poly_array = Polygon.select("fsa_polygon @> point '(#{latitude}, #{longitude})' AS contained").map{ |p| p.contained }
+
     
     if !(valid_address = poly_array.include? true)
-     errors.add(:address, "address does not fall into delivery zone")
+     errors.add(:address, "does not fall into delivery zone")
     end
 
   end
-end
 
+
+end
 
 #def point_validation
   #poly = Polygon.select("fsa_polygon @> point '(#{latitude}, #{longitude})' AS contained")

@@ -5,16 +5,16 @@ class Postal < ApplicationRecord
    
   validates :postalcode, presence: true, length: {minimum: 6, maximum: 6},  format: { with: /\A^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$\z/}
 
-  validate :point_in_polygon
-  #validate :code_starts_with 
+  
+  validate :code_starts_with 
    
-#private
-    #def code_starts_with
+private
+    def code_starts_with
         
-     # if !postalcode.start_with?(*Fsa.all.pluck(:fsacode))
-       # errors.add(:postalcode, "does not fall into Richmond")
-     # end
-   # end
+      if !postalcode.start_with?(*Fsa.all.pluck(:fsacode))
+        errors.add(:postalcode, "does not fall into Richmond")
+      end
+    end
      
    
 
