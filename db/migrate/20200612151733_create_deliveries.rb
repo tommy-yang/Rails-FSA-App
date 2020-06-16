@@ -1,6 +1,6 @@
-class CreateDeliverySchedules < ActiveRecord::Migration[5.2]
+class CreateDeliveries < ActiveRecord::Migration[5.2]
   def change
-    create_table :delivery_schedules do |t|
+    create_table :deliveries do |t|
       t.string :fsa
       t.string :city
       t.string :delivery_day

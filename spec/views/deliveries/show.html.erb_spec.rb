@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "delivery_schedules/show", type: :view do
+RSpec.describe "deliveries/show", type: :view do
   before(:each) do
-    @delivery_schedule = assign(:delivery_schedule, DeliverySchedule.create!(
+    @delivery = assign(:delivery, Delivery.create!(
       fsa: "Fsa",
       city: "City",
       delivery_day: "Delivery Day"

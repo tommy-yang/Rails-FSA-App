@@ -4,9 +4,8 @@ class PolygonsController < ApplicationController
   # GET /polygons
   # GET /polygons.json
   def index
-    @polygons = Polygon.all
+    @polygons = Polygon.all.order(:fsa)
   end
-
   # GET /polygons/1
   # GET /polygons/1.json
   def show
@@ -25,6 +24,7 @@ class PolygonsController < ApplicationController
   # POST /polygons.json
   def create
     @polygon = Polygon.new(polygon_params)
+    @polygon.delivery = Delivery.first
 
     respond_to do |format|
       if @polygon.save
