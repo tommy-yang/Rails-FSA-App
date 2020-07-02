@@ -1,0 +1,27 @@
+<%= form_with(model: time_slot, local: true) do |form| %>
+  <% if time_slot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(time_slot.errors.count, "error") %> prohibited this time_slot from being saved:</h2>
+
+      <ul>
+      <% time_slot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_field :time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.number_field :duration %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

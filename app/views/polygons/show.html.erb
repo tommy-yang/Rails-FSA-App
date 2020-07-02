@@ -1,16 +1,96 @@
 <p id="notice"><%= notice %></p>
 
 
-
 <p>
   <strong>Fsa:</strong>
   <%= @polygon.fsa %>
 </p>
 
+
 <p>
   <strong>Fsa polygon:</strong>
   <%= @polygon.fsa_polygon %>
 </p>
+<style>
+      
+      #map {
+        height: 800px;  
+        width: 100%;  
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Rough Area of Polygon</h3>
+    
+    <div id="map"></div>
+    <script>
+
+var map;
+
+var data = <%= @polygon.fsa_polygon.to_s %>
+test = <%= @polygon.fsa_polygon[2..9] %>
+
+
+
+function createMap () {
+  var a = test,
+      b = data,
+      diff = 0.005;
+
+  var options = {
+    center: { lat: a, lng: b },
+   
+    zoom: 14.5
+  };
+
+  map = new google.maps.Map(document.getElementById('map'), options);
+
+  var polygonCoordinates = [
+    { lat: a - diff, lng: b - diff },
+    { lat: a + diff, lng: b - diff },
+    { lat: a + diff, lng: b + diff },
+    { lat: a - diff, lng: b + diff },
+  ];
+
+  var polygon = new google.maps.Polygon({
+    map: map,
+    paths: polygonCoordinates,
+    strokeColor: 'blue',
+    fillColor: 'blue',
+    fillOpacity: 0.2,
+    draggable: true,
+    editable: true
+  });
+
+  google.maps.event.addListener(polygon.getPath(), 'set_at', function() {
+    logArray(polygon.getPath());
+  });
+  google.maps.event.addListener(polygon.getPath(), 'insert_at', function() {
+    logArray(polygon.getPath());
+  });
+}  
+
+function logArray (array) {
+  var vertices = [];
+
+  for (var i = 0; i < array.getLength(); i++) {
+    vertices.push({
+      lat: array.getAt(i).lat(),
+      lng: array.getAt(i).lng()
+    });
+    console.log(vertices);
+  }
+
+
+  
+}
+
+
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyDeYwSGbHe1mRE3Rd7eyty0JhDdTTuRo5A=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
+
+  
+
 
 <%= link_to 'Edit', edit_polygon_path(@polygon) %> |
 <%= link_to 'Back', polygons_path %>

@@ -19,13 +19,11 @@ private
     
     poly_array = Polygon.select("fsa_polygon @> point '(#{latitude}, #{longitude})' AS contained").map{ |p| p.contained }
 
-    
     if !(valid_address = poly_array.include? true)
      errors.add(:address, "does not fall into delivery zone")
     end
 
   end
-
 
 end
 

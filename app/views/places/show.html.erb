@@ -20,6 +20,11 @@
   <%= @place.longitude %>
 </p>
 
+<script>
+  var data = <%= @place.latitude.to_s %>
+  console.log(data);
+</script>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
 

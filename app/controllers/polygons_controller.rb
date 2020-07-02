@@ -24,7 +24,7 @@ class PolygonsController < ApplicationController
   # POST /polygons.json
   def create
     @polygon = Polygon.new(polygon_params)
-    @polygon.delivery = Delivery.first
+    @polygon.weekday_time_slot = WeekdayTimeSlot.first
 
     respond_to do |format|
       if @polygon.save

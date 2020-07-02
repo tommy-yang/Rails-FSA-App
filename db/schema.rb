@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_152042) do
+ActiveRecord::Schema.define(version: 2020_06_17_150127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 2020_06_12_152042) do
 
   create_table "categories", force: :cascade do |t|
     t.string "fsa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "deliveries", force: :cascade do |t|
-    t.string "fsa"
-    t.string "city"
-    t.string "delivery_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_152042) do
     t.polygon "fsa_polygon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "delivery_id"
+    t.integer "weekday_time_slot_id"
   end
 
   create_table "postals", force: :cascade do |t|
@@ -82,6 +74,24 @@ ActiveRecord::Schema.define(version: 2020_06_12_152042) do
     t.string "point_three_y"
     t.string "point_four_x"
     t.string "point_four_y"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "time_slots", force: :cascade do |t|
+    t.string "time"
+    t.integer "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weekday_time_slots", force: :cascade do |t|
+    t.integer "weekday_id"
+    t.integer "time_slot_id"
+  end
+
+  create_table "weekdays", force: :cascade do |t|
+    t.string "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

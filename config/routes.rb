@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :deliveries
+  resources :time_slots
+  resources :weekdays
   resources :polygons
   resources :shapes
   resources :autocompletes

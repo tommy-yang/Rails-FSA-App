@@ -16,12 +16,101 @@
     <%= form.text_field :fsa %>
   </div>
 
-  <div class="field">
+  <div class="field" > 
     <%= form.label :fsa_polygon %>
-    <%= form.text_field :fsa_polygon %>
+    
+    <%= form.text_field  :fsa_polygon %> 
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<style>
+      
+      #map {
+        height: 800px;  
+        width: 100%;  
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Map of BC</h3>
+    
+    <div id="map"></div>
+    <script>
+
+var map;
+
+function createMap () {
+  var a = 49.283403,
+      b = -123.065101,
+      diff = 0.005;
+
+  var options = {
+    center: { lat: a, lng: b },
+   
+    zoom: 14.5
+  };
+
+  map = new google.maps.Map(document.getElementById('map'), options);
+
+  var polygonCoordinates = [
+    { lat: a - diff, lng: b - diff },
+    { lat: a + diff, lng: b - diff },
+    { lat: a + diff, lng: b + diff },
+    { lat: a - diff, lng: b + diff },
+  ];
+
+  var polygon = new google.maps.Polygon({
+    map: map,
+    paths: polygonCoordinates,
+    strokeColor: 'blue',
+    fillColor: 'blue',
+    fillOpacity: 0.2,
+    draggable: true,
+    editable: true
+  });
+
+  google.maps.event.addListener(polygon.getPath(), 'set_at', function() {
+    logArray(polygon.getPath());
+  });
+  google.maps.event.addListener(polygon.getPath(), 'insert_at', function() {
+    logArray(polygon.getPath());
+  });
+}  
+
+function logArray (array) {
+  var vertices = [];
+
+  for (var i = 0; i < array.getLength(); i++) {
+    vertices.push({
+      lat: array.getAt(i).lat(),
+      lng: array.getAt(i).lng()
+    });
+    
+  }
+
+var testarray = [];
+  for(var i = 0; i <vertices.length; i++){
+
+    testarray.push(vertices[i].lat)
+    testarray.push(vertices[i].lng)
+  
+
+  }
+
+var polytest = testarray.join(',');
+console.log(polytest);
+document.getElementById("polygon_fsa_polygon").value = polytest;
+
+  
+}
+
+
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyDeYwSGbHe1mRE3Rd7eyty0JhDdTTuRo5A=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
+
+  

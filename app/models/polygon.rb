@@ -1,8 +1,8 @@
 class Polygon < ApplicationRecord
     
-  validates :fsa, presence: true
+  validates :fsa, presence: true, uniqueness: true
 
   validates :fsa_polygon, presence: true
 
-  belongs_to :delivery
+  belongs_to :weekday_time_slot
 end
