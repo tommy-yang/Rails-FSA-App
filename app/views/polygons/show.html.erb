@@ -11,6 +11,7 @@
   <strong>Fsa polygon:</strong>
   <%= @polygon.fsa_polygon %>
 </p>
+
 <style>
       
       #map {
@@ -27,10 +28,8 @@
 
 var map;
 
-var data = <%= @polygon.fsa_polygon.to_s %>
-var test = <%= @polygon.fsa_polygon[2..9] %>
-console.log(data);
-console.log(test);
+var data = <%= @polygon.fsa_polygon%>;
+var test = <%= @polygon.fsa_polygon[2..9]%>;
 
 
 function createMap () {
@@ -80,16 +79,15 @@ function logArray (array) {
       lng: array.getAt(i).lng()
     });
     
-  
+  }
+
 }
 
 
     </script>
-     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyCy2yxiy7rbpsyU4bKLfD0DnSExNrNZPdA=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?AIzaSyDeYwSGbHe1mRE3Rd7eyty0JhDdTTuRo5A=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
 
   
-
-
 
 <%= link_to 'Edit', edit_polygon_path(@polygon) %> |
 <%= link_to 'Back', polygons_path %>
