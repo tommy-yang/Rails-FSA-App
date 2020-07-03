@@ -28,8 +28,9 @@
 var map;
 
 var data = <%= @polygon.fsa_polygon.to_s %>
-test = <%= @polygon.fsa_polygon[2..9] %>
-
+var test = <%= @polygon.fsa_polygon[2..9] %>
+console.log(data);
+console.log(test);
 
 
 function createMap () {
@@ -78,18 +79,16 @@ function logArray (array) {
       lat: array.getAt(i).lat(),
       lng: array.getAt(i).lng()
     });
-    console.log(vertices);
-  }
-
-
+    
   
 }
 
 
     </script>
-     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyDeYwSGbHe1mRE3Rd7eyty0JhDdTTuRo5A=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
+     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyCy2yxiy7rbpsyU4bKLfD0DnSExNrNZPdA=YOUR_API_KEY&callback=createMap&libraries=places" async defer></script>
 
   
+
 
 
 <%= link_to 'Edit', edit_polygon_path(@polygon) %> |
